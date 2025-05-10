@@ -155,7 +155,7 @@
     </section>
 
     <section id="gallery" class="gallery" data-aos="fade-up">
-      <h2>My Gallery</h2>
+      <h2>Fun Gallery</h2>
       <div class="gallery-grid">
         <div class="gallery-item" v-for="i in 6" :key="i" data-aos="fade-up" :data-aos-delay="i * 100">
           <img :src="'https://picsum.photos/400/300?random=' + (i + 10)" alt="Gallery Image">
