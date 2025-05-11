@@ -143,13 +143,67 @@
     <section id="projects" class="projects" data-aos="fade-up">
       <h2>Recent Projects</h2>
       <div class="project-grid">
-        <div class="project-card" v-for="i in 3" :key="i" data-aos="fade-up" :data-aos-delay="i * 100">
-          <img :src="'https://picsum.photos/400/250?random=' + i" alt="Project Image">
-          <h3>Project Title {{ i }}</h3>
-          <p>A brief description of the project and the technologies used in its development.</p>
+        <!-- Project 1: Primeasia University -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://new.primeasia.edu.bd/assets/images/logo.png" alt="Primeasia University Website"
+            onerror="this.src='https://placehold.co/400x250?text=Primeasia+University'">
+          <h3>Primeasia University Website</h3>
+          <p>
+            A comprehensive university website with dynamic content management, student portals, and admin dashboards.
+            <strong>As a Fullstack Developer</strong>, I implemented:
+          </p>
+          <ul class="project-tech-list">
+            <li>Laravel backend with custom CMS for news/events</li>
+            <li>Bootstrap 5 responsive frontend</li>
+            <li>MySQL database with Eloquent ORM</li>
+            <li>User authentication for students/faculty</li>
+            <li>API integration for payment processing</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://new.primeasia.edu.bd/" target="_blank" class="btn">Live Site</a>
+            <a href="#" class="btn">Case Study</a>
+          </div>
+        </div>
+
+        <!-- Project 2: RGB Academy -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://rgbacademy.de/assets/images/logo.png" alt="RGB Academy Website"
+            onerror="this.src='https://placehold.co/400x250?text=RGB+Academy'">
+          <h3>RGB Academy (Germany)</h3>
+          <p>
+            An education platform offering course registration, payment processing, and student management.
+            <strong>Key contributions</strong> included:
+          </p>
+          <ul class="project-tech-list">
+            <li>Laravel-based multi-role system (Admin/Instructor/Student)</li>
+            <li>Bootstrap UI with custom theming</li>
+            <li>Stripe/PayPal payment gateway integration</li>
+            <li>Automated email notifications</li>
+            <li>German/English multilingual support</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://rgbacademy.de/" target="_blank" class="btn">Live Site</a>
+            <a href="#" class="btn">Case Study</a>
+          </div>
+        </div>
+
+        <!-- Project 3: Placeholder -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+          <img src="https://placehold.co/400x250?text=E-Commerce+Project" alt="E-Commerce Platform">
+          <h3>E-Commerce Platform</h3>
+          <p>
+            A full-featured online store with product management, cart system, and order processing.
+            Built with Vue.js + Laravel.
+          </p>
+          <ul class="project-tech-list">
+            <li>Vue.js frontend with Vuex state management</li>
+            <li>Laravel REST API backend</li>
+            <li>JWT authentication</li>
+            <li>Product search/filter functionality</li>
+          </ul>
           <div class="project-links">
             <a href="#" class="btn">View Demo</a>
-            <a href="#" class="btn">Source Code</a>
+            <a href="#" class="btn">Case Study</a>
           </div>
         </div>
       </div>
@@ -157,81 +211,194 @@
 
     <section id="gallery" class="gallery" data-aos="fade-up">
       <h2>Fun Gallery</h2>
+
+      <!-- Gallery Grid -->
       <div class="gallery-grid">
-        <div class="gallery-item" v-for="i in 6" :key="i" data-aos="fade-up" :data-aos-delay="i * 100">
-          <img :src="'https://picsum.photos/400/300?random=' + (i + 10)" alt="Gallery Image">
+        <div class="gallery-item" v-for="(item, index) in visibleItems" :key="currentPage * itemsPerPage + index"
+          data-aos="fade-up" :data-aos-delay="index * 100">
+          <img :src="'https://picsum.photos/400/300?random=' + (currentPage * itemsPerPage + index + 1)"
+            :alt="'Gallery Image ' + (currentPage * itemsPerPage + index + 1)">
           <div class="gallery-overlay">
-            <h3>Collection {{ i }}</h3>
+            <h3>Collection {{ currentPage * itemsPerPage + index + 1 }}</h3>
             <p>Beautiful moments captured</p>
           </div>
         </div>
+      </div>
+
+      <!-- Pagination Controls -->
+      <div class="pagination">
+        <button @click="prevPage" :disabled="currentPage === 0">
+          <font-awesome-icon :icon="['fas', 'chevron-left']" />
+        </button>
+
+        <div class="page-numbers">
+          <button v-for="page in totalPages" :key="page" @click="currentPage = page - 1"
+            :class="{ active: currentPage === page - 1 }">
+            {{ page }}
+          </button>
+        </div>
+
+        <button @click="nextPage" :disabled="currentPage === totalPages - 1">
+          <font-awesome-icon :icon="['fas', 'chevron-right']" />
+        </button>
       </div>
     </section>
 
     <section id="contact" class="contact" data-aos="fade-up">
       <h2>Get In Touch</h2>
       <div class="contact-container">
+        <!-- Left Column: Contact Form -->
+        <form id="contactForm" class="contact-form" method="POST" action="#">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" required></textarea>
+          </div>
+          <!-- <button type="submit" class="btn">Send Message <font-awesome-icon :icon="['fas', 'paper-plane']" /></button> -->
+          <h4 style="color: red;">Under Contruction, We will get soon.</h4>
+          <p id="formResponse" class="form-response"></p>
+        </form>
+
+        <!-- Right Column: Contact Info -->
         <div class="contact-info">
-          <h3>Let's Talk</h3>
-          <p>Feel free to reach out to me through any of these channels:</p>
+          <h3>Contact Information</h3>
+          <p>Feel free to reach out for collaborations or just to say hello!</p>
+
           <div class="contact-methods">
             <div class="contact-method">
-              <font-awesome-icon :icon="['fas', 'phone']" />
+              <div class="contact-icon">
+                <font-awesome-icon :icon="['fas', 'user-astronaut']" />
+              </div>
+              <div>
+                <h4>Name</h4>
+                <p>Md Mehedi Hasan</p>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-icon">
+                <font-awesome-icon :icon="['fas', 'phone']" />
+              </div>
               <div>
                 <h4>Phone</h4>
-                <p>+1 (234) 567-8900</p>
+                <p>01789173349, 01537427602</p>
+
               </div>
             </div>
+
             <div class="contact-method">
-              <font-awesome-icon :icon="['fas', 'envelope']" />
+              <div class="contact-icon">
+                <font-awesome-icon :icon="['fas', 'envelope']" />
+              </div>
               <div>
                 <h4>Email</h4>
-                <p>hello@example.com</p>
+                <p>mehedihasansamrat.mhs01@gmail.com</p>
               </div>
             </div>
             <div class="contact-method">
-              <font-awesome-icon :icon="['fas', 'location-dot']" />
+              <div class="contact-icon">
+                <font-awesome-icon :icon="['fas', 'envelope']" />
+              </div>
               <div>
                 <h4>Location</h4>
-                <p>New York, USA</p>
+                <p>Tejgaon, Dhaka-1215 Bangladesh</p>
               </div>
             </div>
           </div>
+
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/md-mehedi-hasan-samrat-8a980b2b9/" class="social-link">
+              <font-awesome-icon :icon="['fab', 'linkedin']" />
+            </a>
+            <a href="https://github.com/Samrat34" class="social-link">
+              <font-awesome-icon :icon="['fab', 'github']" />
+            </a>
+            <a href="https://www.facebook.com/mehedi.samrat.3" class="social-link">
+              <font-awesome-icon :icon="['fab', 'facebook']" />
+            </a>
+          </div>
         </div>
-        <form @submit.prevent="submitForm" class="contact-form">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
       </div>
     </section>
 
-    <footer>
+    <footer class="modern-footer">
+      <div class="footer-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25" fill="var(--primary-color)"></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5" fill="var(--primary-color)"></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            fill="var(--primary-color)"></path>
+        </svg>
+      </div>
+
       <div class="footer-content">
-        <div class="footer-section">
+        <!-- Left Column - Brand Info -->
+        <div class="footer-brand">
+          <div class="logo">MH</div>
           <h3>Md Mehedi Hasan</h3>
-          <p>Fullstack Web Developer</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-section">
-          <h3>Connect</h3>
-          <div class="social-links">
-            <a href="#"><font-awesome-icon :icon="['fab', 'github']" /></a>
-            <a href="#"><font-awesome-icon :icon="['fab', 'linkedin']" /></a>
-            <a href="#"><font-awesome-icon :icon="['fab', 'facebook']" /></a>
-            <a href="#"><font-awesome-icon :icon="['fab', 'discord']" /></a>
+          <p>"Laravel | Vue.js | Full Stack Solutions"</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="GitHub">
+              <font-awesome-icon :icon="['fab', 'github']" />
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <font-awesome-icon :icon="['fab', 'linkedin']" />
+            </a>
+            <a href="#" class="social-icon" aria-label="Discord">
+              <font-awesome-icon :icon="['fab', 'discord']" />
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <font-awesome-icon :icon="['fab', 'facebook']" />
+            </a>
           </div>
         </div>
+
+        <!-- Middle Column - Quick Links -->
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about"><font-awesome-icon :icon="['fas', 'user-astronaut']" /> About Me</a></li>
+            <li><a href="#skills"><font-awesome-icon :icon="['fas', 'code']" /> Skills</a></li>
+            <li><a href="#projects"><font-awesome-icon :icon="['fas', 'rocket']" /> Projects</a></li>
+            <li><a href="#gallery"><font-awesome-icon :icon="['fas', 'moon']" /> Gallery</a></li>
+            <li><a href="#contact"><font-awesome-icon :icon="['fas', 'paper-plane']" /> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Right Column - Contact Info -->
+        <div class="footer-contact">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li>
+              <font-awesome-icon :icon="['fas', 'envelope']" />
+              <span>mehedihasansamrat.mhs01@gmail.com</span>
+            </li>
+            <li>
+              <font-awesome-icon :icon="['fas', 'phone-alt']" />
+              <span>+880 1789 173349</span>
+            </li>
+            <li>
+              <font-awesome-icon :icon="['fas', 'map-marker-alt']" />
+              <span>Tejgaon, Dhaka, Bangladesh</span>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <div class="footer-bottom">
         <p>&copy; 2024 Md Mehedi Hasan. All rights reserved.</p>
+        <div class="footer-credits">
+          <span>Made with <font-awesome-icon :icon="['fas', 'heart']" style="color: #e74c3c;" /> and Vue.js</span>
+        </div>
       </div>
     </footer>
 
@@ -244,9 +411,8 @@
     </button>
   </div>
 </template>
-
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import VueWriter from 'vue-writer'
 
 const isDarkTheme = ref(false)
@@ -273,6 +439,43 @@ const handleScroll = () => {
   showScrollTop.value = window.scrollY > 300
 }
 
+// Form submission handler
+const submitForm = async (e) => {
+  e.preventDefault()
+  const form = e.target
+  const formData = new FormData(form)
+  const responseElement = document.getElementById('formResponse')
+
+  try {
+    responseElement.textContent = 'Sending message...'
+    responseElement.style.color = 'var(--text-color)'
+    responseElement.style.display = 'block'
+
+    const response = await fetch('http://localhost/send_email.php', {
+      method: 'POST',
+      body: formData
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      responseElement.textContent = '✓ Message sent successfully!'
+      responseElement.style.color = 'green'
+      form.reset()
+
+      setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+      }, 2000)
+    } else {
+      throw new Error(data.error || 'Failed to send message')
+    }
+  } catch (error) {
+    responseElement.textContent = `✗ ${error.message}`
+    responseElement.style.color = 'red'
+    console.error('Error:', error)
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -280,9 +483,27 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
+const currentPage = ref(0)
+const itemsPerPage = 6 // Items to show per page
+const totalItems = 18 // Total gallery items
 
-const submitForm = () => {
-  // Handle form submission
-  console.log('Form submitted')
+const totalPages = computed(() => Math.ceil(totalItems / itemsPerPage))
+
+const visibleItems = computed(() => {
+  const start = currentPage.value * itemsPerPage
+  const end = start + itemsPerPage
+  return Array.from({ length: itemsPerPage }, (_, i) => i + start)
+})
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value - 1) {
+    currentPage.value++
+  }
+}
+
+const prevPage = () => {
+  if (currentPage.value > 0) {
+    currentPage.value--
+  }
 }
 </script>
