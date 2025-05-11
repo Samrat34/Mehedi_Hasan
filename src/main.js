@@ -13,6 +13,12 @@ import { faPenRuler } from '@fortawesome/free-solid-svg-icons'
 import { faLaptopCode } from '@fortawesome/free-solid-svg-icons'
 import { faCloud } from '@fortawesome/free-solid-svg-icons'
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
+import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
+import { faRocket } from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faImages } from '@fortawesome/free-solid-svg-icons'
 library.add(
   faGithub,
   faLinkedin,
@@ -36,7 +42,14 @@ library.add(
   faPenRuler,
   faLaptopCode,
   faCloud,
-  faScrewdriverWrench
+  faScrewdriverWrench,
+  faUserAstronaut,
+  faRocket,
+  faPaperPlane,
+  faPhoneAlt,
+  faMapMarkerAlt,
+  faImages
+
 )
 
 const app = createApp(App)
