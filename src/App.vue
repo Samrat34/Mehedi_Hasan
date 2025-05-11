@@ -6,6 +6,7 @@
         <a href="#about" @click="closeMenu">About</a>
         <a href="#skills" @click="closeMenu">Skills</a>
         <a href="#projects" @click="closeMenu">Projects</a>
+        <a href="#gallery" @click="closeMenu">Gallery</a>
         <a href="#contact" @click="closeMenu">Contact</a>
       </div>
       <button class="mobile-menu-btn" @click="toggleMenu">

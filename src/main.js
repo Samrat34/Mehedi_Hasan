@@ -7,7 +7,12 @@ import { faGithub, faLinkedin, faFacebook, faDiscord } from '@fortawesome/free-b
 import { faCode, faDatabase, faServer, faPalette, faArrowUp, faMoon, faSun, faBars, faTimes, faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
+import { faVuejs } from '@fortawesome/free-brands-svg-icons'
+import { faGears } from '@fortawesome/free-solid-svg-icons'
+import { faPenRuler } from '@fortawesome/free-solid-svg-icons'
+import { faLaptopCode } from '@fortawesome/free-solid-svg-icons'
+import { faCloud } from '@fortawesome/free-solid-svg-icons'
+import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
 library.add(
   faGithub,
   faLinkedin,
@@ -24,11 +29,19 @@ library.add(
   faTimes,
   faPhone,
   faEnvelope,
-  faLocationDot
+  faLocationDot,
+  faVuejs,
+  faGears,
+  faDatabase,
+  faPenRuler,
+  faLaptopCode,
+  faCloud,
+  faScrewdriverWrench
 )
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
+
 app.mount('#app')
 
 AOS.init({
