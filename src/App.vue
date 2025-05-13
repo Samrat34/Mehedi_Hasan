@@ -395,9 +395,10 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2024 Md Mehedi Hasan. All rights reserved.</p>
+        <p>&copy; 2025 Md Mehedi Hasan. All rights reserved.</p>
         <div class="footer-credits">
-          <span>Made with <font-awesome-icon :icon="['fas', 'heart']" style="color: #e74c3c;" /> and Vue.js</span>
+          <span>Made by Md Mehedi Hasan <font-awesome-icon :icon="['fas', 'heart']" style="color: #e74c3c;" /> and
+            Vue.js</span>
         </div>
       </div>
     </footer>
