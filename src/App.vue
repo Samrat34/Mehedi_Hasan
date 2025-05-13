@@ -259,7 +259,7 @@
             <textarea name="message" placeholder="Your Message" required></textarea>
           </div>
           <!-- <button type="submit" class="btn">Send Message <font-awesome-icon :icon="['fas', 'paper-plane']" /></button> -->
-          <h4 style="color: red;">Under Contruction, We will get soon.</h4>
+          <h4 style="color: red;">Under Construction, We will get soon.</h4>
           <p id="formResponse" class="form-response"></p>
         </form>
 
